@@ -69,7 +69,8 @@
         .bleupad {
             padding: 10px;
             margin-bottom: 10px;
-            background: #0069bc;
+            /*background: #0069bc;*/
+            background: #02101b;
             border-radius: 10px;
         }
 
@@ -195,66 +196,26 @@
         </div>
     </header>
     <!--style="background-image: url( {{ asset( 'images/main_page.jpg') }} )-->
+
     <div class="container-fluid" ">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+
+                <div class="col-md-12" style="padding: 50px">
                     <div class="container">
-                        <div class="gris pad-10 mar-b-10">
-                            <div>
-
-                                <div>
-
-                                    <div class="" enableviewstate="false" style="width: 98%; margin-top: 5px; margin-bottom: 12px;">
-                                    </div>
-                                    <h1 class="mileux" style="color: #0e0201;">Pour accéder à votre compte, veuillez vous identifier.
-                                    </h1>
-                                    <div class="conx ConexUser">
-                                        <input name="email" type="text" maxlength="50" id="txtEmail" class="local-cnx glowing-border" placeholder="Adresse e-mail" autocomplete="off">
-                                        <span id="email" class="failureNotification" style="display:none;"></span>
-                                        <input type="hidden" name="pwd" autocomplete="off">
-
-                                        <span id="email" style="display:none;"></span>
-                                        <input type="hidden" name="pwd" id="" autocomplete="off">
-
-                                        <input name="pawssord" type="password" maxlength="14" id="txtPassword" class="local-cnx" autocomplete="off" placeholder="Mot de passe">
-
-                                        <span id="pawssord" class="failureNotification" style="display:none;"></span>
-                                        <input type="hidden" name="c" id="c" autocomplete="off">
-
-                                        <a>
-                                            <p class="oublie hoverUnderLine" style="text-decoration: none; color: #f99324;     font-size: 13px;">J'ai oublié mon mot de passe</p>
-                                        </a>
-                                        <div style="position: relative;">
-                                            <div style="margin: 50px auto; padding: 8px 10px;" class="btnP btn-primary">
-                                                <a class="or">Connexion</a>
-
-                                            </div>
-                                            <div id="imgLoaderbtnConnexion" style="position: absolute; bottom: -1px; right: 30px; display: none;">
-                                                <img src="/Style library/SelfCare/Images/ajax-loader.gif" alt="Chargement ..." title="Chargement ..." style="width: 30px;">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="container">
-                        <div class="bleupad">
-                            <h1 style="text-transform: none" class="mileux">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace
+                        <div class="bleupad" >
+                            <h1 style="text-transform: none;" class="mileux">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace
                             </h1>
                             <div class="btnP" style="background: none !important;">
-                                <a class="bl bl2" href="/Pages/Creation-de-compte.aspx">Inscrivez vous!</a>
+                                <a class="bl bl2" href="/login">Come over!</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+        <!-- Available on mobile twoo -->
     </div>
     <script src="{{ asset('res/res/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('res/bootstrap/js/bootstrap.min.js') }} "></script>

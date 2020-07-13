@@ -1,4 +1,4 @@
-@extends('welcome') @section('karma')
+@extends('layouts.app') @section('karma')
 <nav class="navbar navbar-expand-lg navbar-light bg-black">
     <div class="container">
         <a class="navbar-brand" style="color: white;" href="#">Mini Dark Web</a>
