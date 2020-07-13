@@ -8,88 +8,226 @@
     <link rel="stylesheet" href="{{ asset('res/font-awesome.min.css') }}">
 
     <!-- Style Css -->
+    <link rel="stylesheet" href="{{ asset('res/style-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('res/res/style.css') }}">
     <style>
-        p {
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
+        .masthead-page {
+            padding: 1rem 0 4rem;
         }
-        
-        .maintitle {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: .5rem;
-            font-weight: 500;
-            line-height: 1.2;
-            margin-top: 0;
-            display: block;
-            margin-block-start: 0.67em;
-            margin-block-end: 0.67em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+        .masthead {
+            background-image: url("{{ asset('images/overlay.svg') }}"),
+            linear-gradient(45deg,
+            #e61101 0%,
+            #0e0201 100%);
+            position: relative;
+            background-size: cover;
+            z-index: 0;
+            border-bottom-left-radius: 200px;
         }
-        
+    </style>
+    <style>
         .pad-10 {
             padding: 10px;
         }
-        
+
         .mar-b-10 {
             margin-bottom: 10px;
         }
-        
+
         .gris {
             background: #efefef;
             border-radius: 10px;
+        }
+
+        .conx p.oublie {
+            margin: 10px auto 0;
+            padding-left: 15px;
+            font-size: 10px;
+            width: 80%;
+            text-align: left;
+        }
+
+        .hoverUnderLine:hover {
+            text-decoration: underline;
+        }
+
+        .mb-2,
+        .my-2 {
+            margin-bottom: .5rem !important;
+        }
+
+        .mb-5,
+        .my-5 {
+            margin-bottom: 3rem !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .bleupad {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #0069bc;
+            border-radius: 10px;
+        }
+
+        .mileux {
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+        }
+
+        .btnP {
+            border-radius: 2px;
+            margin: 20px auto;
+            display: block;
+            padding: 0;
+            width: 70%;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+
+        .btnP a.bl {
+            color: #0069bc;
+            background: #ffffff none repeat scroll 0 0;
+            border: 1px solid #fff;
+            display: block;
+            padding: 8px 10px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .conx {
+            background: #fff;
+            margin: 10px auto;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .conx .local-cnx {
+            margin-top: 10px;
+            margin-left: 10px;
+            background: #f1f1f1;
+            border: none;
+            width: 80%;
+            box-shadow: none;
+            height: 40px;
         }
     </style>
 
 </head>
 
 <body>
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-black">
         <div class="container">
-            <!--
-            <div>
-                <h1 class="maintitle">
-                    Build your next project faster with SB UI Kit Pro
-                </h1>
-                <p class="page-header-text mb-5">Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the developmet team at Start Bootstrap</p>
+            <a class="navbar-brand" style="color: white;" href="#">Mini Dark Web</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                </ul>
+                <ul class=" navbar-nav my-2 my-lg-0">
+                    <li class="nav-item active">
+                        <a style="color: white;" class="aColor nav-link aColor" href="#">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: white;" class="nav-link aColor" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img alt="AbdeslamRehaimi" class="avatar" src="{{ asset('images/profile.jpg') }}" height="20" width="20">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sw mt-2" style="width: 180px; background-color: #ffffffe8;" role="menu" aria-labelledby="dropdownMenuLink">
+                                <a role="menuitem" class="no-underline user-profile-link px-3 pt-2 pb-2 mb-n2 mt-n1 d-block" href="/AbdeslamRehaimi" data-ga-click="Header, go to profile, text:Signed in as">Signed
+                                    in as <strong class="css-truncate-target">Abdeslam Rehaimi</strong></a>
+
+                                <a role="menuitem" class="dropdown-item" href="#"><span
+                                        class="adminpro-icon adminpro-user-rounded  icon-drop-user"></span>Profile
+                                </a>
+                                <a role="menuitem" class="dropdown-item" href="#"><span
+                                        class="fa fa-cube  icon-drop-user"></span>Projects </a>
+                                <a role="menuitem" class="dropdown-item" href="#"><span
+                                        class="adminpro-icon adminpro-settings  icon-drop-user"></span>Parametre
+                                </a>
+                                <a role="menuitem" class="dropdown-item" href="#"><span
+                                        class="adminpro-icon adminpro-locked  icon-drop-user"></span>Disconnect </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            -->
+        </div>
+    </nav>
+    <header class="masthead masthead-page mb-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 py-5">
+                    <h1 class="mb-2">Find a co_location never been easy!</h1>
+                    <h2 class="m-0">Bringnig to you the most powerful solution to sahre and display co_locations and also locating the position of each. Come join now for free!</h2>
+                </div>
+                <div class="col-lg-4">
+                    <div id="carbonads"><span><span class="carbon-wrap"><a href="#" class="carbon-img" target="_blank"
+                                    rel="noopener sponsored"><img src="{{ asset('images/main_logo.png') }}"
+                                        alt="ads via Carbon" border="0" style="max-width: 130px;"></a><a href="#"
+                                    class="carbon-text" target="_blank" rel="noopener sponsored">Student Co_Location :
+                                    Were here to help you!.</a></span>
+                        <a href="#" class="carbon-poweredby" target="_blank" rel="noopener sponsored">Share u're
+                                favoorite locations</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--style="background-image: url( {{ asset( 'images/main_page.jpg') }} )-->
+    <div class="container-fluid" ">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="container">
                         <div class="gris pad-10 mar-b-10">
-                            <div id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_upAuthentifierUtilisateur">
+                            <div>
 
-                                <div id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_pnlAuthentifierUtilisateur" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'lnkBtnConnex')">
+                                <div>
 
-                                    <div id="msgConteneurFormulaire" class="" enableviewstate="false" style="width: 98%; margin-top: 5px; margin-bottom: 12px;">
+                                    <div class="" enableviewstate="false" style="width: 98%; margin-top: 5px; margin-bottom: 12px;">
                                     </div>
-                                    <h1>Pour accéder à votre compte, veuillez vous identifier.</h1>
+                                    <h1 class="mileux" style="color: #0e0201;">Pour accéder à votre compte, veuillez vous identifier.
+                                    </h1>
                                     <div class="conx ConexUser">
-                                        <input name="ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$txtEmail" type="text" maxlength="50" id="txtEmail" class="local-cnx glowing-border" placeholder="Adresse e-mail" autocomplete="off">
-                                        <span id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_RFVtxtEmail" class="failureNotification" style="display:none;"></span>
-                                        <input type="hidden" name="ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$ValidatorCalloutExtender7_ClientState" id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_ValidatorCalloutExtender7_ClientState" autocomplete="off">
+                                        <input name="email" type="text" maxlength="50" id="txtEmail" class="local-cnx glowing-border" placeholder="Adresse e-mail" autocomplete="off">
+                                        <span id="email" class="failureNotification" style="display:none;"></span>
+                                        <input type="hidden" name="pwd" autocomplete="off">
 
-                                        <span id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_REtxtEmail" style="display:none;"></span>
-                                        <input type="hidden" name="ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$ValidatorCalloutExtender11_ClientState" id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_ValidatorCalloutExtender11_ClientState" autocomplete="off">
+                                        <span id="email" style="display:none;"></span>
+                                        <input type="hidden" name="pwd" id="" autocomplete="off">
 
-                                        <input name="ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$txtPassword" type="password" maxlength="14" id="txtPassword" class="local-cnx" autocomplete="off" placeholder="Mot de passe">
+                                        <input name="pawssord" type="password" maxlength="14" id="txtPassword" class="local-cnx" autocomplete="off" placeholder="Mot de passe">
 
-                                        <span id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_RFVtxtPassword" class="failureNotification" style="display:none;"></span>
-                                        <input type="hidden" name="ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$ValidatorCalloutExtender8_ClientState" id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_ValidatorCalloutExtender8_ClientState" autocomplete="off">
+                                        <span id="pawssord" class="failureNotification" style="display:none;"></span>
+                                        <input type="hidden" name="c" id="c" autocomplete="off">
 
-                                        <a id="lnkAfficherPopUpInitialiserPass" href="javascript:;">
-                                            <p class="oublie hoverUnderLine">J'ai oublié mon mot de passe</p>
+                                        <a>
+                                            <p class="oublie hoverUnderLine" style="text-decoration: none; color: #f99324;     font-size: 13px;">J'ai oublié mon mot de passe</p>
                                         </a>
                                         <div style="position: relative;">
-                                            <div style="margin: 50px auto" class="btn">
-                                                <a onclick="ShowLoaderDisableBtn('imgLoaderbtnConnexion','lnkBtnConnex','VG_btnAuthentification');" id="lnkBtnConnex" class="or" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl50$g_d8fa90bd_8360_4dd7_bea6_22fc238511fe$ctl00$lnkBtnConnex&quot;, &quot;&quot;, true, &quot;VG_btnAuthentification&quot;, &quot;&quot;, false, true))">Connexion</a>
+                                            <div style="margin: 50px auto; padding: 8px 10px;" class="btnP btn-primary">
+                                                <a class="or">Connexion</a>
 
                                             </div>
                                             <div id="imgLoaderbtnConnexion" style="position: absolute; bottom: -1px; right: 30px; display: none;">
@@ -106,22 +244,20 @@
                 </div>
                 <div class="col-md-6">
                     <div class="container">
-                        <div class="bleu pad-10 mar-b-10">
-                            <h1 style="text-transform: none">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace client
+                        <div class="bleupad">
+                            <h1 style="text-transform: none" class="mileux">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace
                             </h1>
-
-                            <div class="btn"><a class="bl bl2" href="/Pages/Creation-de-compte.aspx">Inscrivez vous!</a></div>
-                        </div>
-
-                        <div class=" pad-0 mar-b-10">
-
-                            <div id="ctl00_ctl50_g_d8fa90bd_8360_4dd7_bea6_22fc238511fe_ctl00_divVideo" class="storeapp"><iframe width="100%" height="181" style="border-radius: 10px" src="https://www.youtube.com/embed/TIKfkJTXtPs?rel=0" frameborder="0" allowfullscreen=""></iframe></div>
+                            <div class="btnP" style="background: none !important;">
+                                <a class="bl bl2" href="/Pages/Creation-de-compte.aspx">Inscrivez vous!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ asset('res/res/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('res/bootstrap/js/bootstrap.min.js') }} "></script>
 </body>
 
 </html>
