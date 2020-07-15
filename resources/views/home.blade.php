@@ -125,7 +125,7 @@
             </div>
             <div class="cg-item mx-2">
                 <div class="center-v">
-                    <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/véhicules-à_vendre">
+                    <a class="categories_homepage" href="{{ route('offers') }}">
                         <div class="">
                             <img class="cg-img cg-cars" alt="cg-cars" src="https://www.avito.ma/img/cg-cars.png">
                         </div>
@@ -222,6 +222,7 @@
         </div>
     </section>
     <!-- Available on mobile twoo -->
+    <!--
     <section class=" appb-wrapper mb-4">
         <style>
             .appb-container {
@@ -289,7 +290,7 @@
             </div>
         </div>
     </section>
-
+    -->
 
 </div>
 @endsection

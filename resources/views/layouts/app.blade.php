@@ -21,6 +21,47 @@
     <link rel="stylesheet" href="{{ asset('res/style-theme.css') }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('res/style-theme.css') }}">
+    <style>
+        .aColor {
+            color: #000000;
+        }
+
+        .space_Section {
+            margin-top: 20px;
+        }
+
+        .bg-black {
+            background-color: #000000!important;
+        }
+
+        .bg-cool-blue {
+            background-color: #a0e5e8!important;
+        }
+
+        .icon-drop-user {
+            margin-right: 10px;
+        }
+        .icon-menu-space{
+            margin-right: 50px;
+        }
+
+        .article{
+            text-align: justify;
+            font-style: italic;
+            font-family: cursive;
+            background-color: #ececec;
+        }
+        .tag-item {
+            position: relative;
+            border-right-width: 0px;
+            border-radius: 15px;
+            background-color: #000000;
+            color: white;
+            border-color: #9327ff;
+        }
+
+    </style>
     <style>
         .masthead-page {
             padding: 1rem 0 4rem;
@@ -139,57 +180,66 @@
 
 </head>
 <body style="background-color: #c5c2c2;">
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+    @guest
+    <nav class="navbar navbar-expand-lg navbar-light bg-black">
+        <div class="container">
+            <a class="navbar-brand" style="color: white;" href="#">Co-Location</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                </ul>
+                <ul class=" navbar-nav my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a style="color: white;" class="nav-link aColor" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    <li class="nav-item">
+                    @if (Route::has('register'))
+                        <a style="color: white;" class="nav-link aColor" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+    @else
+
+<nav class="navbar navbar-expand-lg navbar-light bg-black">
+    <div class="container">
+        <a class="navbar-brand" style="color: white;" href="#">Co-Location</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            </ul>
+            <ul class=" navbar-nav my-2 my-lg-0">
+                <li class="nav-item" style="text-align: center;">
+                    <a style="color: white; margin-bottom: -12px;" class="nav-link aColor">{{ Auth::user()->name }} </a>
+                    <a class="small" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Disconnecte') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                    </form>
+
+                </li>
+                <li class="nav-item">
+                        <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="AbdeslamRehaimi" class="avatar" src="{{ asset('images/profile.jpg') }}" height="20" width="20">
+                        </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    @endguest
 
         <header class="masthead masthead-page mb-5">
         <div class="container">
@@ -214,8 +264,14 @@
     </header>
         <main class="py-4">
             @yield('content')
+            @yield('karma')
         </main>
     </div>
+    <footer class="page-footer space_Section" style="background-color: #0e0201;">
+    <div style="color: #fff;" class="footer-copyright text-center py-3">Copyright © 2020 |
+        <a style="color: #fff;" href="https://mdbootstrap.com/education/bootstrap/"> Master ISI</a>
+    </div>
+</footer>
 
     <script src="{{ asset('res/res/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('res/bootstrap/js/bootstrap.min.js') }} "></script>

@@ -130,50 +130,64 @@
 </head>
 
 <body>
+
+@guest
     <nav class="navbar navbar-expand-lg navbar-light bg-black">
         <div class="container">
-            <a class="navbar-brand" style="color: white;" href="#">Mini Dark Web</a>
+            <a class="navbar-brand" style="color: white;" href="#">Co-Location</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 </ul>
                 <ul class=" navbar-nav my-2 my-lg-0">
-                    <li class="nav-item active">
-                        <a style="color: white;" class="aColor nav-link aColor" href="#">Home <span
-                                class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a style="color: white;" class="nav-link aColor" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: white;" class="nav-link aColor" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img alt="AbdeslamRehaimi" class="avatar" src="{{ asset('images/profile.jpg') }}" height="20" width="20">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-sw mt-2" style="width: 180px; background-color: #ffffffe8;" role="menu" aria-labelledby="dropdownMenuLink">
-                                <a role="menuitem" class="no-underline user-profile-link px-3 pt-2 pb-2 mb-n2 mt-n1 d-block" href="/AbdeslamRehaimi" data-ga-click="Header, go to profile, text:Signed in as">Signed
-                                    in as <strong class="css-truncate-target">Abdeslam Rehaimi</strong></a>
-
-                                <a role="menuitem" class="dropdown-item" href="#"><span
-                                        class="adminpro-icon adminpro-user-rounded  icon-drop-user"></span>Profile
-                                </a>
-                                <a role="menuitem" class="dropdown-item" href="#"><span
-                                        class="fa fa-cube  icon-drop-user"></span>Projects </a>
-                                <a role="menuitem" class="dropdown-item" href="#"><span
-                                        class="adminpro-icon adminpro-settings  icon-drop-user"></span>Parametre
-                                </a>
-                                <a role="menuitem" class="dropdown-item" href="#"><span
-                                        class="adminpro-icon adminpro-locked  icon-drop-user"></span>Disconnect </a>
-                            </div>
-                        </div>
+                    @if (Route::has('register'))
+                        <a style="color: white;" class="nav-link aColor" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    @else
+
+<nav class="navbar navbar-expand-lg navbar-light bg-black">
+    <div class="container">
+        <a class="navbar-brand" style="color: white;" href="#">Co-Location</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            </ul>
+            <ul class=" navbar-nav my-2 my-lg-0">
+                <li class="nav-item" style="text-align: center;">
+                    <a style="color: white; margin-bottom: -12px;" class="nav-link aColor">{{ Auth::user()->name }} </a>
+                    <a class="small" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Disconnecte') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                    </form>
+
+                </li>
+                <li class="nav-item">
+                        <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="AbdeslamRehaimi" class="avatar" src="{{ asset('images/profile.jpg') }}" height="20" width="20">
+                        </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    @endguest
     <header class="masthead masthead-page mb-5">
         <div class="container">
             <div class="row align-items-center">
@@ -198,16 +212,16 @@
     <!--style="background-image: url( {{ asset( 'images/main_page.jpg') }} )-->
 
     <div class="container-fluid" ">
-        <div class="container">
-            <div class="row">
+        <div class="container ">
+            <div class="row ">
 
-                <div class="col-md-12" style="padding: 50px">
-                    <div class="container">
-                        <div class="bleupad" >
-                            <h1 style="text-transform: none;" class="mileux">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace
+                <div class="col-md-12 " style="padding: 50px ">
+                    <div class="container ">
+                        <div class="bleupad " >
+                            <h1 style="text-transform: none; " class="mileux ">C’est votre première visite ? Inscrivez-vous pour accéder à votre espace
                             </h1>
-                            <div class="btnP" style="background: none !important;">
-                                <a class="bl bl2" href="/login">Come over!</a>
+                            <div class="btnP " style="background: none !important; ">
+                                <a class="bl bl2 " href="/login ">Come over!</a>
                             </div>
                         </div>
                     </div>
@@ -217,8 +231,13 @@
         </div>
         <!-- Available on mobile twoo -->
     </div>
-    <script src="{{ asset('res/res/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('res/bootstrap/js/bootstrap.min.js') }} "></script>
+    <footer class="page-footer space_Section " style="background-color: #0e0201; ">
+    <div style="color: #fff; " class="footer-copyright text-center py-3 ">Copyright © 2020 ||
+        <a style="color: #fff; " href="https://mdbootstrap.com/education/bootstrap/ "> Master ISI</a>
+    </div>
+</footer>
+    <script src="{{ asset( 'res/res/jquery-3.3.1.min.js') }} "></script>
+    <script src="{{ asset( 'res/bootstrap/js/bootstrap.min.js') }} "></script>
 </body>
 
 </html>
