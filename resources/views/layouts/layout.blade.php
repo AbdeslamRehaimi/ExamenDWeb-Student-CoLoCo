@@ -100,6 +100,8 @@
 
     <script src="{{ asset('res/res/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('res/bootstrap/js/bootstrap.min.js') }} "></script>
+
+    @yield('custum-js')
 </body>
 
 </html>

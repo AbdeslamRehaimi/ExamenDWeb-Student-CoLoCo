@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/offers', 'OffersController@index')->name('offers');
+Route::get('/show', 'OffersController@show')->name('show');
+Route::get('/add', 'OffersController@edit')->name('add');

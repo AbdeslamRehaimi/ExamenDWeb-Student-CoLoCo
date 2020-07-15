@@ -256,7 +256,6 @@
         opacity: 0.7;
     }
 </style>
-
 @endsection
 <div class="jumbotron jumbotron-fluid bg-cool-blue">
     <div class="container">
@@ -265,12 +264,14 @@
         </h1>
     </div>
 </div>
+<!--
 <div class="user-header" style=" margin-top: -50px; ">
     <div class="user-profile">
         <img src="https://raw.githubusercontent.com/AbdeslamRehaimi/SpringMVC_Blog/master/src/main/webapp/resources/images/users/04.jpg" class="user">
         <h1>Abdeslam Rehaimi</h1>
     </div>
 </div>
+-->
 <div class="container-fluid">
 
     <div class="container">
@@ -295,14 +296,34 @@
             </div>
             <ul class="nav pdetails-allinfotab justify-content-center" style=" width: 1500px; text-align: center; color: beige; margin: 30px; " id="product-details" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" id="product-details-area3-tab" style="color: white;" data-toggle="tab" href="#product-details-area3" role="tab" aria-controls="product-details-area3" aria-selected="false">1500DH/mois</a>
+                    <a class="nav-link" id="product-details-area3-tab" style="color: white;" data-toggle="tab" href="#product-details-area3" role="tab" aria-controls="product-details-area3" aria-selected="false">Information</a>
                 </li>
             </ul>
+            <ul style="width: 1500px; background-color: white; color: black; text-align: center ;">
+                <h1>Brand new hotel</h1>
+                <h2>1500 MAD</h2>
+                <p>Superficier 25m <br> Max etudiant 80 <br> Brahd 25</p>
+            </ul>
+            <hr style="width: 50%; color: black; background-color: black; margin-left: 280px;">
             <!--Integrate MAP Here-->
+
+            <div id='map' style='width: 1500px; height: 500px;'></div>
+
         </div>
 
     </div>
 </div>
 
 
-@endsection
+
+@section('custum-js') @stack ('before-scripts')
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaXRzYWJkZXNsYW0iLCJhIjoiY2tjbXQ1bzloMDRuNjJ0bGYwejNmbTNpdSJ9.bVIJw-u4FRKEi6ksBGSpSg';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+    });
+</script>
+@stack ('after-scripts') @endsection @endsection

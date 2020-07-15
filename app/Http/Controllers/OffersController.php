@@ -15,7 +15,7 @@ class OffersController extends Controller
     public function index()
     {
         //
-        return view('offers.showOffer');
+        return view('offers.offers');
     }
 
     /**
@@ -48,6 +48,7 @@ class OffersController extends Controller
     public function show(Offer $offer)
     {
         //
+        return view('offers.showOffer');
     }
 
     /**
@@ -59,6 +60,7 @@ class OffersController extends Controller
     public function edit(Offer $offer)
     {
         //
+        return view('offers.newOffer');
     }
 
     /**
