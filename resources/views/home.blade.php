@@ -113,9 +113,9 @@
         <div class="p-box cg-container d-flex justify-content-center">
             <div class="cg-item mx-2">
                 <div class="center-v">
-                    <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/informatique_et_multimedia-à_vendre">
+                    <a class="categories_homepage" href="{{ route('profile') }}">
                         <div class="">
-                            <img class="cg-img cg-market" alt="cg-market" src="https://www.avito.ma/img/cg-cars.png">
+                            <img class="cg-img cg-market" alt="cg-market" src="{{ asset('icons/parametre.png') }}">
                         </div>
                         <div class="">
                             <div class="cg-text" style="color:#58d577;">PARAMETRE</div>
@@ -127,7 +127,7 @@
                 <div class="center-v">
                     <a class="categories_homepage" href="{{ route('offers') }}">
                         <div class="">
-                            <img class="cg-img cg-cars" alt="cg-cars" src="https://www.avito.ma/img/cg-cars.png">
+                            <img class="cg-img cg-cars" alt="cg-cars" src="{{ asset('icons/offers.png') }}">
                         </div>
                         <div class="">
                             <div class="cg-text" style="color:#ff5664;">OFFERS</div>
@@ -139,7 +139,7 @@
                 <div class="center-v">
                     <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/immobilier-à_vendre">
                         <div class="">
-                            <img class="cg-img cg-re" alt="cg-re" src="https://www.avito.ma/img/cg-cars.png">
+                            <img class="cg-img cg-re" alt="cg-re" src="{{ asset('icons/demands.png') }}">
                         </div>
                         <div class="">
                             <div class="cg-text" style="color:#42aeff;">DEMANDS</div>
@@ -151,7 +151,7 @@
                 <div class="center-v">
                     <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/pour_la_maision_et_jardin-à_vendre">
                         <div class="">
-                            <img class="cg-img cg-garden" alt="cg-garden" src="https://www.avito.ma/img/cg-cars.png">
+                            <img class="cg-img cg-garden" alt="cg-garden" src="{{ asset('icons/requests.png') }}">
                         </div>
                         <div class="">
                             <div class="cg-text" style="color:#4a4a4a;">REQUESTS</div>

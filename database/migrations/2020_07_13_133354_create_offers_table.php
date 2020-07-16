@@ -15,6 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('titre');
             $table->string('adress');
             $table->float('latitude');
             $table->float('longtude');

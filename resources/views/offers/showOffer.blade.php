@@ -9,7 +9,7 @@
         vertical-align: top;
         background-color: #350000;
     }
-    
+
     .user-profile {
         padding-top: 60px;
         width: 100%;
@@ -19,19 +19,19 @@
         justify-items: center;
         z-index: 2;
     }
-    
+
     .user {
         border-radius: 50%;
         margin: 0;
         position: relative;
         display: block;
     }
-    
+
     .user-contents {
         padding-top: 0px;
         /*min-height: 360px;*/
     }
-    
+
     h2 {
         flex: 1;
         color: black;
@@ -44,18 +44,18 @@
         align-items: center;
         justify-content: flex-end;
     }
-    
+
     h1 {
         color: white;
     }
-    
+
     .blok1 {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         margin-top: 20px;
     }
-    
+
     .albimage {
         width: 165px;
         margin-top: 14px;
@@ -64,7 +64,7 @@
         position: relative;
         height: 200px;
     }
-    
+
     .block2 {
         flex: 1;
         vertical-align: text-top;
@@ -73,11 +73,11 @@
         width: 100%;
         z-index: 1;
     }
-    
+
     body {
         background-color: #fdf1ec;
     }
-    
+
     .wrapper {
         height: 180px;
         width: 800px;
@@ -88,17 +88,17 @@
         -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
         box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     }
-    
+
     .product-img {
         float: left;
         height: 180px;
         width: 327px;
     }
-    
+
     .product-img img {
         border-radius: 7px 0 0 7px;
     }
-    
+
     .product-info {
         float: left;
         height: 180px;
@@ -106,23 +106,23 @@
         border-radius: 0 7px 10px 7px;
         background-color: #ffffff;
     }
-    
+
     .product-text {
         height: 180px;
         width: 327px;
     }
-    
+
     .product-text h1 {
         margin: 0 0 0 38px;
         font-size: 34px;
         color: #474747;
     }
-    
+
     .product-text h1,
     .product-price-btn p {
         font-family: 'Bentham', serif;
     }
-    
+
     .product-text h2 {
         margin: 0 0 10px 38px;
         font-size: 13px;
@@ -132,7 +132,7 @@
         color: #d2d2d2;
         letter-spacing: 0.2em;
     }
-    
+
     .product-text p {
         height: 125px;
         margin: 0 0 0 38px;
@@ -143,14 +143,14 @@
         font-weight: lighter;
         overflow: hidden;
     }
-    
+
     .product-price-btn {
         height: 103px;
         width: 327px;
         margin-top: 17px;
         position: relative;
     }
-    
+
     .product-price-btn p {
         display: inline-block;
         position: absolute;
@@ -162,14 +162,14 @@
         font-weight: lighter;
         color: #474747;
     }
-    
+
     span {
         display: inline-block;
         height: 50px;
         font-family: 'Suranna', serif;
         font-size: 34px;
     }
-    
+
     .product-price-btn button {
         float: right;
         display: inline-block;
@@ -189,16 +189,16 @@
         cursor: pointer;
         outline: none;
     }
-    
+
     .product-price-btn button:hover {
         background-color: #79b0a1;
     }
-    
+
     .pdetails-allinfotab {
         background: #474747;
         padding: 15px 0;
     }
-    
+
     .pdetails-allinfotab li a {
         display: inline-block;
         vertical-align: middle;
@@ -208,7 +208,7 @@
         font-size: 16px;
         padding: 3px 25px;
     }
-    
+
     .pdetails-allinfo,
     .pdetails-description,
     .pdetails-moreinfo,
@@ -226,12 +226,12 @@
         text-align: center;
         font-family: arial;
     }
-    
+
     .title {
         color: grey;
         font-size: 18px;
     }
-    
+
     button {
         border: none;
         outline: 0;
@@ -244,13 +244,13 @@
         width: 100%;
         font-size: 18px;
     }
-    
+
     a {
         text-decoration: none;
         font-size: 22px;
         color: black;
     }
-    
+
     button:hover,
     a:hover {
         opacity: 0.7;
@@ -277,20 +277,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <input type="button" style="float: left; border-radius: 50px;" value="Return" onclick="window.location.href='${pageContext.request.contextPath}/article/add'; return false;" class="btn btn-primary" />
+                <input type="button" style="float: left; border-radius: 50px;" value="Return" onclick="window.location.href='../offers'; return false;" class="btn btn-primary" />
                 <br/><br/>
             </div>
             <!--Product Image-->
             <div class="col-md-8">
-                <img src="https://content.avito.ma/images/55/5523648379.jpg" srcset="" mode="contain" height="551px" alt="Macbook air 2015 intel i5 13 inch - 1" loading="lazy" width="500px">
+                <img src="{{ $offer->photo }}" srcset="" mode="contain" height="551px" alt="Macbook air 2015 intel i5 13 inch - 1" loading="lazy" width="500px">
             </div>
             <div class="col-md-4">
                 <!--User Badge-->
                 <div class="card" style=" border-top-left-radius: 50px; border-radius: 150px; ">
-                    <img src="https://www.w3schools.com/w3images/team2.jpg" style="border-top-left-radius: 50px; border-top-right-radius: 50px;" alt="John" style="width:100%">
-                    <h1 style="color: #000;">John Doe</h1>
-                    <p class="title">CEO & Founder, Example</p>
-                    <p><button style="border-bottom-left-radius: 33px; border-bottom-right-radius: 33px;">Contact</button></p>
+                    <img src="{{ $offer->users->photo }}"  style="border-top-left-radius: 50px; border-top-right-radius: 50px; height: 220px" alt="John" style="width:100%">
+                    <h1 style="color: #000;     font-size: 30px;">{{ $offer->users->name }}</h1>
+                    <p class="title">{{ $offer->users->email }}</p>
+                    <p><button style="border-bottom-left-radius: 33px; border-bottom-right-radius: 33px;"><span class="fa fa-phone fa-2x" style="color: red; margin-right: 10px;"></span>{{ $offer->users->tel }}</button></p>
                     <p><button style="border-bottom-left-radius: 33px; border-bottom-right-radius: 33px; width: 180px;">Demander</button></p>
                 </div>
             </div>
@@ -300,9 +300,9 @@
                 </li>
             </ul>
             <ul style="width: 1500px; background-color: white; color: black; text-align: center ;">
-                <h1>Brand new hotel</h1>
-                <h2>1500 MAD</h2>
-                <p>Superficier 25m <br> Max etudiant 80 <br> Brahd 25</p>
+                <h1>{{ $offer->titre }}</h1>
+                <h2>{{ $offer->prix }} MAD</h2>
+                <p>Superficier {{ $offer->superficie }}m <br> Max etudiant: {{ $offer->capacite }} <br> Bundled with: {{ $offer->description }}</p>
             </ul>
             <hr style="width: 50%; color: black; background-color: black; margin-left: 280px;">
             <!--Integrate MAP Here-->

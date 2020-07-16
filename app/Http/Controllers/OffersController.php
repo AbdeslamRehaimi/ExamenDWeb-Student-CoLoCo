@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Offer;
 use Illuminate\Http\Request;
+use Auth;
 
 class OffersController extends Controller
 {
@@ -15,7 +16,22 @@ class OffersController extends Controller
     public function index()
     {
         //
-        return view('offers.offers');
+        //return view('offers.offers');
+
+
+
+        if(request()->usuer){
+            $offers = Offer::with('users')->WhereHas('users', function($query){
+                $query->where('titre', request()->user);
+            })->paginate(6);
+        }else{
+            $offers = Offer::with('users')->paginate(6);
+        }
+
+        //dd($offers);
+
+        return view('offers.offers')->with('offers', $offers);
+
     }
 
     /**
@@ -45,10 +61,12 @@ class OffersController extends Controller
      * @param  \App\Offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function show(Offer $offer)
+    public function show($titre)
     {
         //
-        return view('offers.showOffer');
+        //return view('offers.showOffer');
+        $offer = Offer::where('titre', $titre)->firstOrFail();
+        return view('offers.showOffer')->with('offer', $offer);
     }
 
     /**
@@ -57,11 +75,26 @@ class OffersController extends Controller
      * @param  \App\Offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offer $offer)
-    {
-        //
-        return view('offers.newOffer');
+    public function edit(Request $request){
+
+        $duplicata = Offer::where('titre', $request->titre)->firstOrFail();
+        dd("dz d "+$duplicata);
+        dd(Auth::user()->id);
+
+        /*if ($duplicata -> isNotEmpty() ){
+            //return redirect()->route('offers')->with('danger', 'Cette offre est deja ajouter!');
+            //session()->flash('danger', 'Cette offre est deja ajouter!');
+            //return redirect()->back();
+            //return redirect()->route('offers');
+        }
+        $offer->users_id = Auth::user()->id;
+        $offer->save();
+
+        session()->flash('success', 'Saved');
+        //return redirect()->route('offers');
+        */
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -85,4 +118,28 @@ class OffersController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Offer  $offer
+     * @return \Illuminate\Http\Response
+     */
+    public function reqadd(Offer $offer)
+    {
+        //
+        //return view('offers.addOffer');
+        return view('offers.addOffer')->with('offer', $offer);
+    }
+
+
+
+    public function userSettings(){
+        $offer = Offer::where('users_id', Auth::user()->id)->firstOrFail();
+        return view('profile.userOffers')->with('offer', $offer);
+        //return view('profile.userOffers');
+    }
+
+
+
 }

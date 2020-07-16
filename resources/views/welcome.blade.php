@@ -170,7 +170,7 @@
             <ul class=" navbar-nav my-2 my-lg-0">
                 <li class="nav-item" style="text-align: center;">
                     <a style="color: white; margin-bottom: -12px;" class="nav-link aColor">{{ Auth::user()->name }} </a>
-                    <a class="small" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Disconnecte') }}</a>
+                    <a style="color: red; margin-bottom: -12px;" class="small" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Disconnecte') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                     </form>

@@ -19,7 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Ofers
 Route::get('/offers', 'OffersController@index')->name('offers');
-Route::get('/show', 'OffersController@show')->name('show');
-Route::get('/add', 'OffersController@edit')->name('add');
+Route::get('/offers/{titre}','OffersController@show')->name('offers.show');
+Route::get('/offer/add','OffersController@reqadd')->name('offers.add');
+Route::post('/offers/store','OffersController@edit')->name('offers.store');
+
+//Profile
+Route::get('/profile', 'OffersController@userSettings')->name('profile');
+
