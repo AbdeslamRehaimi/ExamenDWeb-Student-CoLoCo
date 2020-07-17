@@ -313,12 +313,19 @@
 
         for (var i = 0; i < offers.data.length; i++) {
             console.log(offers.data[i].titre);
+            var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+                'Titre: ' + offers.data[i].titre + '  &&  Located in : ' + offers.data[i].adress
+            );
             var otherMarkers = [offers.data[i].longtude, offers.data[i].latitude];
-            var marker = new mapboxgl.Marker().setLngLat(otherMarkers).addTo(map);
+            var marker = new mapboxgl.Marker().setLngLat(otherMarkers).setPopup(popup).addTo(map);
 
+            //Attaching popup
         }
 
-        var marker = new mapboxgl.Marker({color: "#d02922"}).setLngLat(user_location).addTo(map);
+        var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+                'Cest notre localisation principale, nous somme a beni mellal !!!'
+            );
+        var marker = new mapboxgl.Marker({color: "#d02922"}).setLngLat(user_location).setPopup(popup).addTo(map);
     </script>
     @stack('after-scripts')
     @endsection @endsection
