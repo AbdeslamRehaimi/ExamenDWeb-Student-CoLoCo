@@ -109,12 +109,12 @@
 
     .product-text {
         height: 180px;
-        width: 327px;
+        width: 450px;
     }
 
     .product-text h1 {
-        margin: 0 0 0 38px;
-        font-size: 34px;
+        margin: 0 0 0 8px;
+        font-size: 30px;
         color: #474747;
     }
 
@@ -124,13 +124,12 @@
     }
 
     .product-text h2 {
-        margin: 0 0 10px 38px;
+        margin: 0 0 10px 8px;
         font-size: 13px;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
         color: #d2d2d2;
-        letter-spacing: 0.2em;
     }
 
     .product-text p {
@@ -235,7 +234,7 @@
                             <div class="col-md-3 col-sm-3 ">
                                 <div class="blok1">
                                     <div style="display: block; margin: 35px; align-items: center">
-                                        <img style="    margin-left: 20px;" src="{{ $item->photo }}" class="user" width="80px" height="80px">
+                                        <img src="{{ $item->users->photo }}"  style="margin-left: 20px;"  class="user" width="80px" height="80px">
                                         <a href="${pageContext.request.contextPath}/article/view/${item.id}">
                                             <h2 style="text-align: center;  margin-left: -20px;"><a href="{{ route('profile', ['user' => $item->users->name ]) }}"><em>{{ $item->users->name }}</em></a></h2>
                                         </a>
@@ -280,58 +279,6 @@
                 <!--End Repeate-->
 
 
-                <!--Repeate This-->
-                <!--
-                <div class="user-contents">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 ">
-                                <div class="blok1">
-                                    <div style="display: block; margin: 35px; align-items: center">
-                                        <img src="https://raw.githubusercontent.com/AbdeslamRehaimi/SpringMVC_Blog/master/src/main/webapp/resources/images/users/04.jpg" class="user" width="80px" height="80px">
-                                        <a href="${pageContext.request.contextPath}/article/view/${item.id}">
-                                            <h2 style="text-align: center;  margin-left: -20px;"><em>Ahmed Avura</em></h2>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-sm-9">
-                                <div class="article">
-                                    <div class="wrapper">
-                                        <div class="product-img">
-                                            <img src="http://bit.ly/2tMBBTd" height="180" width="327">
-                                        </div>
-                                        <div class="product-info">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="product-text">
-                                                            <h1>Harvest Vase</h1>
-                                                            <h2>by studio and friends</h2>
-                                                            <p>Superficier : 150m <br> Superficier : 150m <br> Superficier : 150m <br> Superficier : 150m </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="product-price-btn">
-                                                            <p><span style=" margin-left: 80px; margin-top: 10px; ">78</span>$</p>
-                                                            <button type="button" style="margin-top: 30px;"><a href="#">Voire l'offre</a></button>
-                                                            <button type="button" style="margin-top: 15px;">Demander</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="width: 50%; color: black; background-color: black; margin-left: 180px;">
-                        </div>
-                    </div>
-                </div>
-                -->
-                <!--End Repeate-->
-
 
                 <script>
                     var offers = {!!json_encode($offers->toArray(), JSON_HEX_TAG) !!};
@@ -346,13 +293,16 @@
         </div>
     </div>
 
-    @section('custum-js') @stack ('before-scripts')
+    @section('custum-js')
+    @stack('before-scripts')
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet'/>
     <script>
         var offers = {!!json_encode($offers->toArray(), JSON_HEX_TAG) !!};
-        console.log(offer.titre);
-        var user_location = [offers.data[1].longtude, offers.data[1].latitude];
+        console.log(offers.data.length);
+        //var user_location = [offers.data[1].longtude, offers.data[1].latitude];
+        var user_location = [-6.353321573187401, 32.335456747816394];
+
         mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -361,6 +311,14 @@
             zoom: 15
         });
 
-        var marker = new mapboxgl.Marker().setLngLat(user_location).addTo(map);
+        for (var i = 0; i < offers.data.length; i++) {
+            console.log(offers.data[i].titre);
+            var otherMarkers = [offers.data[i].longtude, offers.data[i].latitude];
+            var marker = new mapboxgl.Marker().setLngLat(otherMarkers).addTo(map);
+
+        }
+
+        var marker = new mapboxgl.Marker({color: "#d02922"}).setLngLat(user_location).addTo(map);
     </script>
-    @stack ('after-scripts') @endsection @endsection
+    @stack('after-scripts')
+    @endsection @endsection

@@ -149,12 +149,12 @@
             </div>
             <div class="cg-item mx-2">
                 <div class="center-v">
-                    <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/pour_la_maision_et_jardin-à_vendre">
+                    <a class="categories_homepage" href="{{ route('about') }}">
                         <div class="">
                             <img class="cg-img cg-garden" alt="cg-garden" src="{{ asset('icons/requests.png') }}">
                         </div>
                         <div class="">
-                            <div class="cg-text" style="color:#4a4a4a;">REQUESTS</div>
+                            <div class="cg-text" style="color:#4a4a4a;">ABOUT</div>
                         </div>
                     </a>
                 </div>
@@ -212,7 +212,7 @@
             <div class="stats-container d-flex justify-content-between">
                 <div class="statsa d-flex justify-content-center">
                     <span class="num"><p>73%</p></span>
-                    <span class="txt"><h5>Des objets et annonces sont vendus en moins de 3 jours</h5></span>
+                    <span class="txt"><h5>Des annonces de colocation sont publier en moins de 3 jours</h5></span>
                 </div>
                 <div class="statsb d-flex justify-content-center">
                     <span class="num"><p>92%</p></span>

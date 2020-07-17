@@ -108,14 +108,14 @@ class OffersController extends Controller
             'prix' => $request->prix,
             'capacite' => $request->capacite,
             'superficie' => $request->superficie,
-            'photo' => $patch . '.' . $format,
+            'photo' => $patch,
             'description' => $request->description,
             'latitude' => $request->latitude,
             'longtude' => $request->longtude,
             'users_id' => auth()->id(),
         ]);
 
-        return index();
+        return redirect(route('offers'));
 
     }
 

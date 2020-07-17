@@ -146,11 +146,11 @@
 
     .product-text {
         height: 180px;
-        width: 327px;
+        width: 450px;
     }
 
     .product-text h1 {
-        margin: 0 0 0 38px;
+        margin: 0 0 0 10px;
         font-size: 34px;
         color: #474747;
     }
@@ -161,8 +161,8 @@
     }
 
     .product-text h2 {
-        margin: 0 0 10px 38px;
-        font-size: 13px;
+        margin: 0 0 10px 10px;
+        font-size: 12px;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         text-transform: uppercase;

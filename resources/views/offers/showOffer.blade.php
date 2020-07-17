@@ -313,12 +313,12 @@
 
     </div>
 </div>
-<!--
+
             <script>
                 var offer = {!! json_encode($offer->toArray(), JSON_HEX_TAG) !!};
                 console.log(offer.titre);
             </script>
--->
+
 
 @section('custum-js') @stack ('before-scripts')
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
