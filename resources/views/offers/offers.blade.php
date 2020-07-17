@@ -212,8 +212,10 @@
                 <br/><br/>
             </div>
         </div>
-
-        <div id='map' style='width: 1500px; height: 500px;'></div>
+        <div class="statsa d-flex justify-content-center">
+            <span class="txt"><h5>Localisation des ensemble des offres!</h5></span>
+        </div>
+        <div id='map' style='height: 500px;'></div>
 
 
 
@@ -279,6 +281,24 @@
                 <!--End Repeate-->
 
 
+                <div class="cr-pagination pt-30">
+                    {{$offers->appends(request()->input())->links()}}
+                    <!--
+                    <p>Showing 1-12 of 13 item(s)</p>
+                    <ul>
+                        <li><a href="http://preview.hasthemes.com/haltico-v3/haltico/shop-rightsidebar.html"><i class="ion ion-ios-arrow-back"></i> Previous</a></li>
+                        <li class="active"><a href="http://preview.hasthemes.com/haltico-v3/haltico/shop-rightsidebar.html">1</a></li>
+                        <li><a href="http://preview.hasthemes.com/haltico-v3/haltico/shop-rightsidebar.html">2</a></li>
+                        <li><a href="http://preview.hasthemes.com/haltico-v3/haltico/shop-rightsidebar.html">Next <i class="ion ion-ios-arrow-forward"></i></a></li>
+                    </ul>
+                    -->
+                </div>
+
+
+
+
+
+
 
                 <script>
                     var offers = {!!json_encode($offers->toArray(), JSON_HEX_TAG) !!};
@@ -291,7 +311,16 @@
 
             </div>
         </div>
+
+
     </div>
+
+    <footer class="page-footer space_Section" style="background-color: #0e0201;">
+    <div style="color: #fff;" class="footer-copyright text-center py-3">Copyright © 2020 |
+        <a style="color: #fff;" href="https://mdbootstrap.com/education/bootstrap/"> Master ISI</a>
+    </div>
+</footer>
+
 
     @section('custum-js')
     @stack('before-scripts')
@@ -327,5 +356,7 @@
             );
         var marker = new mapboxgl.Marker({color: "#d02922"}).setLngLat(user_location).setPopup(popup).addTo(map);
     </script>
+
+
     @stack('after-scripts')
     @endsection @endsection

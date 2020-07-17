@@ -306,13 +306,23 @@
             </ul>
             <hr style="width: 50%; color: black; background-color: black; margin-left: 280px;">
             <!--Integrate MAP Here-->
-
+            <BR><br>
+            <div class="statsa d-flex justify-content-center" style="margin: 5px; text_align: center;">
+            <span class="txt"><span style="color: red" class="fa fa-map-marker"><span> <h5>  La localisation de cette offre!</h5></span>
+        </div>
             <div id='map' style='width: 1500px; height: 500px;'></div>
 
         </div>
 
     </div>
+
+<footer class="page-footer space_Section" style="background-color: #0e0201;">
+    <div style="color: #fff;" class="footer-copyright text-center py-3">Copyright © 2020 |
+        <a style="color: #fff;" href="https://mdbootstrap.com/education/bootstrap/"> Master ISI</a>
+    </div>
+</footer>
 </div>
+
 
             <script>
                 var offer = {!! json_encode($offer->toArray(), JSON_HEX_TAG) !!};
