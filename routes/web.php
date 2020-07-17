@@ -30,7 +30,7 @@ Route::post('/offers/store','OffersController@edit')->name('offers.store');
 Route::get('/profile', 'OffersController@userSettings')->name('profile');
 
 //Demands
-Route::get('/demands', 'DemandsController@index')->name('demands');
+Route::get('/demands', 'DemandsController@userDemands')->name('demands');
 Route::get('/demands/add/{titre}','DemandsController@reqadd')->name('demands.add');
 Route::post('/demands/store','DemandsController@edit')->name('demands.store');
 

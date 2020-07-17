@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Demand;
 use Illuminate\Http\Request;
 use App\Offer;
+use App\User;
+
 
 class DemandsController extends Controller
 {
@@ -108,7 +110,6 @@ class DemandsController extends Controller
         })->paginate(6);*/
 
         $offers = User::where('id', auth()->id())->firstOrFail();
-
 
         return view('demands.demands')->with(
             'offer', $offers);

@@ -137,7 +137,7 @@
             </div>
             <div class="cg-item mx-2">
                 <div class="center-v">
-                    <a class="categories_homepage" href="https://www.avito.ma/fr/maroc/immobilier-à_vendre">
+                    <a class="categories_homepage" href="{{ route('demands') }}">
                         <div class="">
                             <img class="cg-img cg-re" alt="cg-re" src="{{ asset('icons/demands.png') }}">
                         </div>
