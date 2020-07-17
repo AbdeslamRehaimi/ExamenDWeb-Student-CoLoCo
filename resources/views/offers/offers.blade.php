@@ -214,13 +214,18 @@
             </div>
         </div>
 
-
+        <div id='map' style='width: 1500px; height: 500px;'></div>
 
 
 
 
 
         <div class="container">
+        <ul class="nav pdetails-allinfotab justify-content-center" style=" background-color: chocolate; text-align: center; color: beige; margin: 30px; " id="product-details" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="product-details-area3-tab" style="color: white;" data-toggle="tab" href="#product-details-area3" role="tab" aria-controls="product-details-area3" aria-selected="false">Tous les offre publier</a>
+                </li>
+            </ul>
             <div class="row">
                 @foreach ($offers as $item)
                 <!--Repeate This-->
@@ -232,7 +237,7 @@
                                     <div style="display: block; margin: 35px; align-items: center">
                                         <img style="    margin-left: 20px;" src="{{ $item->photo }}" class="user" width="80px" height="80px">
                                         <a href="${pageContext.request.contextPath}/article/view/${item.id}">
-                                            <h2 style="text-align: center;  margin-left: -20px;"><em>{{ $item->users->name }}</em></h2>
+                                            <h2 style="text-align: center;  margin-left: -20px;"><a href="{{ route('profile', ['user' => $item->users->name ]) }}"><em>{{ $item->users->name }}</em></a></h2>
                                         </a>
                                     </div>
                                 </div>
@@ -328,8 +333,34 @@
                 <!--End Repeate-->
 
 
+                <script>
+                    var offers = {!!json_encode($offers->toArray(), JSON_HEX_TAG) !!};
+                    console.log(offers.data[1].titre);
+                    console.log(offers.data.length);
+                    for (var i = 0; i < offers.data.length; i++) {
+                        console.log(offers.data[i].titre);
+                    }
+                </script>
 
             </div>
         </div>
     </div>
-    @endsection
+
+    @section('custum-js') @stack ('before-scripts')
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <script>
+        var offers = {!!json_encode($offers->toArray(), JSON_HEX_TAG) !!};
+        console.log(offer.titre);
+        var user_location = [offers.data[1].longtude, offers.data[1].latitude];
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: user_location,
+            zoom: 15
+        });
+
+        var marker = new mapboxgl.Marker().setLngLat(user_location).addTo(map);
+    </script>
+    @stack ('after-scripts') @endsection @endsection

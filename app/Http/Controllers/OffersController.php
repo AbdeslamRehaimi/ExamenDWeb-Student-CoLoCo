@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -20,7 +21,7 @@ class OffersController extends Controller
 
 
 
-        if(request()->usuer){
+        if(request()->user){
             $offers = Offer::with('users')->WhereHas('users', function($query){
                 $query->where('titre', request()->user);
             })->paginate(6);
@@ -77,9 +78,9 @@ class OffersController extends Controller
      */
     public function edit(Request $request){
 
-        $duplicata = Offer::where('titre', $request->titre)->firstOrFail();
+        /*$duplicata = Offer::where('titre', $request->titre)->firstOrFail();
         dd("dz d "+$duplicata);
-        dd(Auth::user()->id);
+        dd(Auth::user()->id);*/
 
         /*if ($duplicata -> isNotEmpty() ){
             //return redirect()->route('offers')->with('danger', 'Cette offre est deja ajouter!');
@@ -93,6 +94,29 @@ class OffersController extends Controller
         session()->flash('success', 'Saved');
         //return redirect()->route('offers');
         */
+        //Its working well
+
+        $file = $request->file('photo');
+        $format = $request->photo->extension();
+        $patch = $request->photo->store('images');
+        $name = $file->getClientOriginalName();
+
+        //save on table
+        Offer::create([
+            'titre' => $request->titre,
+            'adress' => $request->adress,
+            'prix' => $request->prix,
+            'capacite' => $request->capacite,
+            'superficie' => $request->superficie,
+            'photo' => $patch . '.' . $format,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longtude' => $request->longtude,
+            'users_id' => auth()->id(),
+        ]);
+
+        return index();
+
     }
 
 
@@ -135,8 +159,16 @@ class OffersController extends Controller
 
 
     public function userSettings(){
-        $offer = Offer::where('users_id', Auth::user()->id)->firstOrFail();
-        return view('profile.userOffers')->with('offer', $offer);
+
+        /*$offers = Offer::with('users')->WhereHas('users', function($query){
+            $query->where('name', request()->user);
+        })->paginate(6);*/
+
+        $offers = User::where('name', request()->user)->firstOrFail();
+
+
+        return view('profile.userOffers')->with(
+            'offer', $offers);
         //return view('profile.userOffers');
     }
 

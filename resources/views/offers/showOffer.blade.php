@@ -288,7 +288,7 @@
                 <!--User Badge-->
                 <div class="card" style=" border-top-left-radius: 50px; border-radius: 150px; ">
                     <img src="{{ $offer->users->photo }}"  style="border-top-left-radius: 50px; border-top-right-radius: 50px; height: 220px" alt="John" style="width:100%">
-                    <h1 style="color: #000;     font-size: 30px;">{{ $offer->users->name }}</h1>
+                    <h1 style="color: #000;     font-size: 30px;"><a href="{{ route('profile', ['user' => $offer->users->name]) }}">{{ $offer->users->name }}</a></h1>
                     <p class="title">{{ $offer->users->email }}</p>
                     <p><button style="border-bottom-left-radius: 33px; border-bottom-right-radius: 33px;"><span class="fa fa-phone fa-2x" style="color: red; margin-right: 10px;"></span>{{ $offer->users->tel }}</button></p>
                     <p><button style="border-bottom-left-radius: 33px; border-bottom-right-radius: 33px; width: 180px;">Demander</button></p>
@@ -313,17 +313,29 @@
 
     </div>
 </div>
-
-
+<!--
+            <script>
+                var offer = {!! json_encode($offer->toArray(), JSON_HEX_TAG) !!};
+                console.log(offer.titre);
+            </script>
+-->
 
 @section('custum-js') @stack ('before-scripts')
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaXRzYWJkZXNsYW0iLCJhIjoiY2tjbXQ1bzloMDRuNjJ0bGYwejNmbTNpdSJ9.bVIJw-u4FRKEi6ksBGSpSg';
+
+    var offer = {!! json_encode($offer->toArray(), JSON_HEX_TAG) !!};
+    console.log(offer.titre);
+    var user_location = [offer.longtude, offer.latitude];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: user_location,
+        zoom: 15
     });
+
+    var marker = new mapboxgl.Marker().setLngLat(user_location).addTo(map);
 </script>
 @stack ('after-scripts') @endsection @endsection

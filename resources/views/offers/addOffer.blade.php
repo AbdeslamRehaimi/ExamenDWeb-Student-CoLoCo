@@ -18,7 +18,7 @@
                 <div class="card" style="margin-top: 25px">
                     <div class="card-header">Offer Add</div>
                     <form method="post" action="{{ route('offers.store') }}" enctype="multipart/form-data">
-                        @csrf()
+                        @csrf
 
                         <div class="card-body row">
                             <input type="hidden" required name="id" value="{{ $offer->id }}">
@@ -28,13 +28,13 @@
                                 <input name="titre" value="{{ $offer->titre }}" class="form-control" placeholder="titre" />
                             </div>
 
-                            <div class="form-group col-md-12 required ">
-                                <label for="superficier">superficier</label>
+                            <div class="form-group col-md-6 required ">
+                                <label for="superficier">Superficier</label>
                                 <input name="superficie" value="{{ $offer->superficie }}" class="form-control" placeholder="superficier" />
                             </div>
 
-                            <div class="form-group col-md-12 required ">
-                                <label for="capaciter">capaciter</label>
+                            <div class="form-group col-md-6 required ">
+                                <label for="capaciter">Capaciter</label>
                                 <input name="capacite" value="{{ $offer->capacite }}" class="form-control" placeholder="capaciter" />
                             </div>
 
@@ -44,25 +44,31 @@
                             </div>
 
                             <div class="form-group col-md-12 required ">
-                                <label for="photo">photo</label>
-                                <input name="photo" value="{{ $offer->photo }}" class="form-control" placeholder="photo" />
+                                <label for="adress">Adress</label>
+                                <input id="adress" name="adress" class="form-control" placeholder="Adress" />
                             </div>
 
+
                             <div class="form-group col-md-12 required ">
-                                <label for="description">description</label>
+                                <label for="description">Description</label>
                                 <textarea name="description" value="{{ $offer->description }}" class="form-control" placeholder="description"></textarea>
                             </div>
 
                             <div class="form-group col-md-12 required ">
-                                <label for="latitude">latitude</label>
-                                <input id="lat" name="latitude" value="{{ $offer->latitude }}" style="border-radius: 150px;" class="form-control" disabled="true" />
+                                <label for="latitude">Latitude</label>
+                                <input type="text"  id="latitude" name="latitude" style="border-radius: 150px;" class="form-control"  />
                             </div>
                             <div class="form-group col-md-12 required ">
-                                <label for="longitude">longitude</label>
-                                <input id="lng" name="longtude" value="{{ $offer->longtude }}" style="border-radius: 150px;" class="form-control" disabled="true" />
+                                <label for="longitude">Longitude</label>
+                                <input type="text" id="longtude" name="longtude"  style="border-radius: 150px;" class="form-control"  />
                             </div>
 
+                            <div class="form-group col-md-12">
+                                <label>Image</label>
+                                <input type="file" name="photo" class="form-control">
+                            </div>
 
+<!--
                             <div class="form-group col-md-12 required">
                                 <div class="btn">
                                     <span>Picture</span>
@@ -70,7 +76,7 @@
                                 </div>
 
                             </div>
-
+-->
 
 
 
@@ -80,7 +86,7 @@
 
 
                             <div class="form-group geocoder">
-                                <div id="geocoder" name="adress" value="{{ $offer->adress }}"></div>
+                                <div id="geocoder"  ></div>
                             </div>
                             <div class="form-group col-md-12 required ">
                                 <div id='map' style='width: 1070px; height: 500px;'></div>
@@ -117,6 +123,12 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />
 <script>
     var user_location = [-6.353321573187401, 32.335456747816394];
+    //Rextraction adress from cordinates
+    var long = 32.335456747816394;
+    var latd = -6.353321573187401;
+
+
+
     mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
     var map = new mapboxgl.Map({
         container: 'map',
@@ -149,8 +161,15 @@
         marker.remove();
         addMarker(e.lngLat, 'click');
         //console.log(e.lngLat.lat);
-        document.getElementById("lat").value = e.lngLat.lat;
-        document.getElementById("lng").value = e.lngLat.lng;
+        document.getElementById("latitude").value = e.lngLat.lat;
+        document.getElementById("longtude").value = e.lngLat.lng;
+        //Extracting Adress
+        long = e.lngLat.lng;
+        latd = e.lngLat.lat;
+
+        getGeocoder(long, latd);
+
+
 
     });
 
@@ -184,11 +203,25 @@
 
     }
 
+
     function onDragEnd() {
         var lngLat = marker.getLngLat();
         document.getElementById("lat").value = lngLat.lat;
         document.getElementById("lng").value = lngLat.lng;
         console.log('lng: ' + lngLat.lng + '<br />lat: ' + lngLat.lat);
+
+
+    }
+
+    function getGeocoder(lat, long){
+        let url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lat + ',' + long + '.json?access_token=pk.eyJ1IjoiaXRzYWJkZXNsYW0iLCJhIjoiY2tjbXQ1bzloMDRuNjJ0bGYwejNmbTNpdSJ9.bVIJw-u4FRKEi6ksBGSpSg';
+        fetch(url)
+        .then(res => res.json())
+        .then((out) => {
+            document.getElementById("adress").value = out.features[1].place_name;
+            console.log('Checkout this JSON! ', out.features[1].place_name);
+        })
+        .catch(err => { throw err });
     }
 
 

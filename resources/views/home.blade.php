@@ -108,8 +108,8 @@
                 right: 4px;
             }
         </style>
-        <p class="p-box cg-title">Choisissez une catégorie</p>
-        <p class="p-box cg-subtitle">Catégories populaires</p>
+        <p class="p-box cg-title">Qu'est ce que vous voulez faire aujourd'hui?</p>
+        <p class="p-box cg-subtitle">Clicker l'un des option donner dans le menu dessu!</p>
         <div class="p-box cg-container d-flex justify-content-center">
             <div class="cg-item mx-2">
                 <div class="center-v">
@@ -291,6 +291,5 @@
         </div>
     </section>
     -->
-
 </div>
 @endsection
