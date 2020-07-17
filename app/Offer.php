@@ -21,6 +21,10 @@ class Offer extends Model
         return "storage/" . $this->photo;
     }
 
+    public function demands(){
+        return $this->hasMany('App\Demand', 'offers_id');
+    }
+
 
 
 }

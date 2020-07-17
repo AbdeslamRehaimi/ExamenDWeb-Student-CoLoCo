@@ -263,7 +263,7 @@
                                                     <div class="col-md-6">
                                                         <div class="product-price-btn">
                                                             <button type="button" style="margin-top: 30px;"><a style="color: white;" href="{{ route('offers.show', $item->titre ) }}">Voire l'offre</a></button>
-                                                            <button type="button" style="margin-top: 15px;"><a href="#">Demander</a></button>
+                                                            <button type="button" style="margin-top: 15px;"><a style="color: white;" href="{{ route('demands.add', $item->titre ) }}">Demander</a></button>
                                                         </div>
                                                     </div>
                                                 </div>

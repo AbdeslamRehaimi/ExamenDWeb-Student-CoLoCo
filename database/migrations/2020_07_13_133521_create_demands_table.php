@@ -18,6 +18,7 @@ class CreateDemandsTable extends Migration
             $table->double('budget');
             $table->string('commentaire');
             $table->unsignedInteger('offers_id');
+            $table->unsignedInteger('users_id');
             //$table->foreign('offers_id')->references('id')->on('offers')->onDelete('cascade');
             $table->timestamps();
         });

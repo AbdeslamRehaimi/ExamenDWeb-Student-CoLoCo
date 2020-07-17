@@ -42,4 +42,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Offer', 'users_id');
     }
 
+    public function demands(){
+        return $this->hasMany('App\Demand', 'users_id');
+    }
+
 }
